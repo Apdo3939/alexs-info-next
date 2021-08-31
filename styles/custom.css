@@ -1,0 +1,417 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    color: white;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/*Para o menu fixo descomentar trecho de código abaixo*/
+/*
+html,
+body {
+    height: 100%;
+}
+*/
+
+body {
+    background-color: rgba(233, 155, 10, 0.500);
+    /*Para o menu fixo descomentar trecho de código abaixo*/
+    /*display: flex;
+    flex-direction: column;*/
+}
+
+.max-width {
+    max-width: 1200px;
+    padding: 0 10px;
+    margin: auto;
+}
+
+.navbar {
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+    padding: 24px 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: rgb(233, 155, 10);
+    border-bottom: 1px solid darkgoldenrod;
+}
+
+.navbar .max-width {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar .logo a {
+    font-size: xx-large;
+    font-weight: 500;
+}
+
+.navbar .menu li {
+    display: inline-block;
+}
+
+.navbar .menu li a {
+    display: block;
+    font-size: larger;
+    font-weight: 500;
+    margin-left: 24px;
+}
+
+.menu-btn {
+    font-size: x-large;
+    cursor: pointer;
+    display: none;
+}
+
+@media(max-width: 768px) {
+    .menu-btn {
+        display: block;
+        z-index: 999;
+    }
+
+    .menu-btn i.active:before {
+        content: '\f00d';
+    }
+
+    .navbar .menu {
+        background-color: rgb(232, 163, 80);
+        position: fixed;
+        height: 100vh;
+        width: 100%;
+        left: -100%;
+        top: 0;
+        text-align: center;
+        padding-top: 80px;
+        transition: all 0.3s ease;
+    }
+
+    .navbar .menu.active {
+        left: 0;
+    }
+
+    .navbar .menu li {
+        display: block;
+    }
+
+    .navbar .menu li a {
+        display: inline-block;
+        margin: 8px 0;
+        font-size: large;
+    }
+
+    .max-width {
+        max-width: 768px;
+    }
+
+}
+
+section {
+    padding: 120px 0;
+}
+
+@media(max-width: 768px) {
+    section {
+        padding: 60px 0;
+    }
+
+}
+
+@media(max-width: 560px) {
+    section {
+        padding: 60px 0;
+    }
+
+}
+
+.top {
+    display: flex;
+    background: url('../public/2.jpg') no-repeat center;
+    height: 100vh;
+    min-height: 500px;
+    background-attachment: fixed;
+    background-size: cover;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.top .max-width {
+    width: 100%;
+    display: flex;
+}
+
+.top .top-content .text-1 {
+    font-size: larger;
+    margin-top: 120px;
+}
+
+.top .top-content .text-2 {
+    font-size: xx-large;
+    font-weight: 400;
+    margin: 8px 0;
+}
+
+.top .top-content .text-3 {
+    font-size: x-large;
+}
+
+.top .top-content a {
+    display: inline-block;
+    background-color: rgb(233, 155, 10);
+    font-size: larger;
+    padding: 12px 36px;
+    margin-top: 20px;
+    font-weight: 500;
+    border-radius: 8px;
+    border: 2px solid rgb(233, 155, 10);
+    transition: all 0.3s ease;
+}
+
+.top .top-content a:hover {
+    background: none;
+    color: rgb(233, 155, 10);
+}
+
+.services {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.services .title {
+    text-align: center;
+    margin: 40px 0;
+    font-weight: 500;
+    font-size: xx-large;
+}
+
+.services .serv-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.services .serv-content .card {
+    width: 30%;
+    background-color: rgba(233, 155, 10, 0.500);
+    text-align: center;
+    border-radius: 8px;
+    padding: 50px 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.services .serv-content .card:hover {
+    background-color: rgb(233, 155, 10);
+}
+
+.services .serv-content .card i {
+    font-size: 50px;
+    color: rgb(100, 80, 255);
+    transition: all 0.3s ease;
+}
+
+.services .serv-content .card:hover i {
+    color: white;
+}
+
+.services .serv-content .card .box {
+    transition: all 0.3s ease;
+}
+
+.services .serv-content .card:hover .box {
+    transform: scale(1.05);
+}
+
+.services .serv-content .card .text {
+    font-size: medium;
+    font-weight: 400;
+    margin: 10px 0;
+}
+
+@media(max-width: 768px) {
+    .services .serv-content .card {
+        width: calc(50% - 10px);
+        margin-bottom: 20px;
+    }
+}
+
+@media(max-width: 560px) {
+    .services .serv-content .card {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+.contact {
+    background-color: rgba(233, 155, 10, 0.500);
+    font-family: 'Montserrat', sans-serif;
+    padding-bottom: 100px;
+}
+
+.contact .title {
+    text-align: center;
+    margin-bottom: 50px;
+    padding-top: 50px;
+    font-weight: 500;
+    font-size: x-large;
+}
+
+.contact .contact-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.contact .contact-content .column {
+    width: calc(50% - 30px);
+}
+
+.contact .contact-content .left p {
+    text-align: justify;
+}
+
+.contact .contact-content .left .icons {
+    margin: 10px 0;
+}
+
+.contact .contact-content .row {
+    display: flex;
+    height: 65px;
+    align-items: center;
+}
+
+.contact .contact-content .row .info {
+    margin-left: 30px;
+}
+
+.contact .contact-content .row i {
+    font-size: medium;
+    color: rgb(100, 80, 255);
+}
+
+.contact .contact-content .info .head {
+    font-weight: 500;
+}
+
+.contact .contact-content .info .sub-title {
+    font-weight: 400;
+    color: rgb(240, 240, 240);
+}
+
+.contact .contact-content .text {
+    font-weight: 500;
+    color: rgb(240, 240, 240);
+    font-size: larger;
+    margin-bottom: 10px;
+}
+
+.contact .right form .field,
+.contact .right form .fields .field {
+    height: 40px;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.contact .right form .textarea {
+    height: 80px;
+    width: 100%;
+}
+
+.contact .right form .name {
+    margin-right: 10px;
+}
+
+.contact .right form .field input,
+.contact .right form .textarea textarea {
+    height: 100%;
+    width: 100%;
+    border-radius: 8px;
+    outline: none;
+    padding: 0 15px;
+    color: rgb(100, 100, 100);
+    font-family: 'Montserrat', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.contact .right form .field input:focus,
+.contact .right form .textarea textarea:focus {
+    border-color: rgb(100, 80, 255);
+}
+
+.contact .right form .textarea textarea {
+    padding-top: 10px;
+    resize: none;
+}
+
+.contact .right form .button-area {
+    display: flex;
+    align-items: center;
+}
+
+.right form .button-area button {
+    display: block;
+    width: 160px;
+    height: 40px;
+    outline: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: larger;
+    background-color: rgb(100, 80, 255);
+    border-radius: 8px;
+    cursor: pointer;
+    flex-wrap: wrap;
+    border: 2px solid rgb(100, 80, 255);
+    transition: all 0.3s ease;
+}
+
+.right form .button-area button:hover {
+    background: white;
+    color: rgb(100, 80, 255);
+}
+
+@media(max-width: 768px) {
+    .contact .contact-content .column {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+@media(max-width: 560px) {
+    .contact .title {
+        margin-top: 10px;
+    }
+
+    .contact .right form .fields {
+        flex-direction: column;
+    }
+
+    .contact .right form .name,
+    .contact .right form .email {
+        margin: 0;
+    }
+}
+
+footer {
+    background-color: rgb(233, 155, 10);
+    padding: 25px;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    margin-top: auto;
+    border-top: 1px solid darkgoldenrod;
+}
+
+footer span a {
+    color: rgb(100, 80, 255);
+}
+
+footer span a:hover {
+    color: white;
+}
