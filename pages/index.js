@@ -1,7 +1,55 @@
 import Head from 'next/head';
 import Script from 'next/script';
+import { useState } from 'react';
 
 function HomePage({ data }) {
+    const [budget, setBudget] = useState({
+        name: '',
+        email: '',
+        subject: '',
+        content: ''
+    });
+
+    const [load, setLoad] = useState({
+        formSave: false,
+        type: '',
+        message: ''
+    });
+
+    const onChangeInput = e => setBudget({ ...budget, [e.target.name]: e.target.value });
+
+    const sendBudget = async e => {
+        e.preventDefault();
+        setLoad({ formSave: true });
+        try {
+            const res = await fetch('http://localhost:8081/contact', {
+                method: 'POST',
+                body: JSON.stringify(budget),
+                headers: { 'Content-Type': 'application/json' }
+            });
+            const response = await res.json();
+            if (response.error) {
+                setLoad({
+                    formSave: false,
+                    type: 'error',
+                    message: response.message
+                });
+            } else {
+                setLoad({
+                    formSave: false,
+                    type: 'success',
+                    message: response.message
+                });
+            }
+        } catch (error) {
+            setLoad({
+                formSave: false,
+                type: 'error',
+                message: 'Erro: Orçamento não enviado. Tente mais tarde.'
+            });
+        }
+    }
+
     return (
         <>
             <Head>
@@ -112,25 +160,49 @@ function HomePage({ data }) {
                         <div className="column right">
                             <div className="text">
                                 {data.data.cont_title_form}
+                                {load.type === 'error' ? <span className='alert-danger'>{load.message}</span> : ''}
+                                {load.type === 'success' ? <span className='alert-success'>{load.message}</span> : ''}
                             </div>
-                            <form>
+
+                            <form onSubmit={sendBudget}>
                                 <div className="fields">
                                     <div className="field nome">
-                                        <input type="text" placeholder="Digite o nome" required />
+                                        <input
+                                            type="text"
+                                            name='name'
+                                            onChange={onChangeInput}
+                                            placeholder="Digite o nome"
+                                            required />
                                     </div>
                                     <div className="field email">
-                                        <input type="email" placeholder="Digite o email" required />
+                                        <input
+                                            type="email"
+                                            name='email'
+                                            onChange={onChangeInput}
+                                            placeholder="Digite o email"
+                                            required />
                                     </div>
                                 </div>
                                 <div className="field">
-                                    <input type="text" placeholder="Digite o assunto" required />
+                                    <input
+                                        type="text"
+                                        name='subject'
+                                        onChange={onChangeInput}
+                                        placeholder="Digite o assunto"
+                                        required />
                                 </div>
                                 <div className="field textarea">
-                                    <textarea cols='30' rows="10" type="text" placeholder="Digite o conteúdo"
+                                    <textarea
+                                        cols='30'
+                                        rows="10"
+                                        type="text"
+                                        name='content'
+                                        onChange={onChangeInput}
+                                        placeholder="Digite o conteúdo"
                                         required></textarea>
                                 </div>
                                 <div className="button-area">
-                                    <button type="submit">Enviar</button>
+                                    {load.formSave ? 'Enviando...' : <button type="submit">Enviar</button>}
                                 </div>
                             </form>
                         </div>

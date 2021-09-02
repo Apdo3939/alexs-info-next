@@ -306,6 +306,8 @@ section {
 }
 
 .contact .contact-content .text {
+    display: flex;
+    flex-direction: column;
     font-weight: 500;
     color: rgb(240, 240, 240);
     font-size: larger;
@@ -413,4 +415,22 @@ footer span a {
 
 footer span a:hover {
     color: white;
+}
+
+.contact .right .alert-danger {
+    background-color: rgba(233, 155, 10, 0.100);
+    color: orangered;
+    margin: 8px 0;
+    border: 1px solid orangered;
+    border-radius: 8px;
+    padding: 8px;
+}
+
+.contact .right .alert-success {
+    background-color: rgba(233, 155, 10, 0.100);
+    color: green;
+    margin: 8px 0;
+    border: 1px solid green;
+    border-radius: 8px;
+    padding: 8px;
 }
