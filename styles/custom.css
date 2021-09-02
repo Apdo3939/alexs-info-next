@@ -134,7 +134,6 @@ section {
 
 .top {
     display: flex;
-    background: url('../public/2.jpg') no-repeat center;
     height: 100vh;
     min-height: 500px;
     background-attachment: fixed;
